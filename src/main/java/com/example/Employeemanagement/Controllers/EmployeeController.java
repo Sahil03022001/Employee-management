@@ -4,6 +4,7 @@ import com.example.Employeemanagement.DTOs.Requests.EmployeeReqDto;
 import com.example.Employeemanagement.DTOs.Requests.EmployeeUpdateReqDTO;
 import com.example.Employeemanagement.DTOs.Responses.EmployeeResponseDTO;
 import com.example.Employeemanagement.Services.EmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
-
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+    @Autowired
+    EmployeeService employeeService;
 
     @PostMapping("/create")
     public ResponseEntity<String> createEmployee(@RequestBody EmployeeReqDto employeeReqDto) {
